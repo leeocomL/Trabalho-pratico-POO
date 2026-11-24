@@ -1,0 +1,26 @@
+"""Configurações gerais, dimensões, física e paleta de cores do jogo."""
+
+LARGURA = 960
+ALTURA = 540
+FPS = 60
+
+GRAVIDADE = 0.65
+CHAO_Y = 460
+
+# Paleta de Cores (Estilo Dark Fantasy)
+COR_FUNDO = (18, 16, 26)
+COR_CHAO = (38, 33, 50)
+COR_BORDA_CHAO = (75, 65, 95)
+COR_JOGADOR = (0, 210, 255)
+COR_CACHECOL = (230, 45, 75)
+COR_ZUMBI = (80, 190, 90)
+COR_ARQUEIRO = (170, 95, 230)
+COR_CAVALEIRO = (220, 140, 40)
+COR_BOSS = (210, 30, 60)
+COR_FURIA = (255, 80, 0)
+COR_FLECHA_JOGADOR = (120, 240, 255)
+COR_FLECHA_INIMIGA = (255, 90, 90)
+COR_BRANCO = (240, 240, 240)
+COR_AMARELO = (250, 210, 60)
+COR_VERMELHO = (220, 50, 50)
+COR_VERDE = (50, 210, 100)

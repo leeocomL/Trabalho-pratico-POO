@@ -1,0 +1,7 @@
+"""Ponto de entrada do jogo de POO."""
+
+from src.jogo import Jogo
+
+
+if __name__ == "__main__":
+  Jogo().executar()
