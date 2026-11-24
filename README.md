@@ -4,4 +4,4 @@ Jogo 2D em Python com **Pygame** desenvolvido para a disciplina de Programação
 
 ## Estrutura do Projeto
 
-*(Em construção — aguardando diagrama de classes e definição inicial)*
+*(Em construção aguardando diagrama de classes e definição inicial)*
