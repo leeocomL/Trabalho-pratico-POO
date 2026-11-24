@@ -28,7 +28,7 @@ Este guia reúne tudo o que cada integrante do grupo (6 pessoas) precisa saber p
 
 Cada integrante assume **1 pacote** (preencher os nomes abaixo antes de começar):
 
-| Pacote | Integrante | O que faz | Dificuldade |
+| Pacote | Integrante | O que faz |
 | :--- | :--- | :--- | :---: |
 | **Pacote 1** | *(Antonio)* | `Entidade` (classe abstrata), `Plataforma` e `UtilitarioColisao` (`@staticmethod`) 
 | **Pacote 2** | *(Leo)* | `Arma` (`municao` com `@property`, disparo e recarga) + `Projetil` 
