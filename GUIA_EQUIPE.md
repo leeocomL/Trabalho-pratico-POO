@@ -30,8 +30,8 @@ Cada integrante assume **1 pacote** (preencher os nomes abaixo antes de começar
 
 | Pacote | Integrante | O que faz | Dificuldade |
 | :--- | :--- | :--- | :---: |
-| **Pacote 1** | *(Nome)* | `Entidade` (classe abstrata), `Plataforma` e `UtilitarioColisao` (`@staticmethod`) | Fácil |
-| **Pacote 2** | *(Nome)* | `Arma` (`municao` com `@property`, disparo e recarga) + `Projetil` | Fácil / Médio |
+| **Pacote 1** | *(Antonio)* | `Entidade` (classe abstrata), `Plataforma` e `UtilitarioColisao` (`@staticmethod`) | Fácil |
+| **Pacote 2** | *(Leo)* | `Arma` (`municao` com `@property`, disparo e recarga) + `Projetil` | Fácil / Médio |
 | **Pacote 3** | *(Nome)* | `Inimigo` (classe abstrata) + `ZumbiSaltador` + `ArqueiroMaldito` | Médio |
 | **Pacote 4** | *(Nome)* | `CavaleiroEscudeiro` + `ChefeGuardiao` + `FabricaInimigos` (`@classmethod`/`@staticmethod`) | Médio |
 | **Pacote 5** | *(Nome)* | `Placar` (`pontuacao` com `@property`, `__str__`, `__eq__`, `__lt__`) + `Fase` + integração no `Jogo` | Médio / Difícil |
