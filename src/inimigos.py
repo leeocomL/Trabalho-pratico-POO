@@ -186,6 +186,10 @@ class CavaleiroEscudeiro(Inimigo):
     self.x += self.velocidade * direcao
     self.aplicar_gravidade_basica()
 
+  def desenhar(self, tela: pygame.Surface):
+    super().desenhar(tela)
+    lado = self.x + self.largura if self.alvo.x > self.x else self.x - 8
+    pygame.draw.rect(tela, COR_BRANCO, (lado, self.y + 10, 8, 36))
 
 class ChefeGuardiao(Inimigo):
   """Chefe da masmorra com fase de fúria e ataques variados."""
