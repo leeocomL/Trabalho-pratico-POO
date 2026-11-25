@@ -272,3 +272,4 @@ class ChefeGuardiao(Inimigo):
     )
     txt = self._fonte_titulo.render(titulo_boss, True, COR_BRANCO)
     tela.blit(txt, (LARGURA // 2 - txt.get_width() // 2, 28))
+
