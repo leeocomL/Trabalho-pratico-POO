@@ -36,5 +36,6 @@ class Jogador(Entidade):
   @vida.setter
   def vida(self, valor: int):
     if valor < self._vida:
-      self.invencivel_timer = 40
+        self.invencivel_timer = 40
+
     self._vida = max(0, min(valor, self.vida_maxima))
