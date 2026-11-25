@@ -70,3 +70,14 @@ class Jogador(Entidade):
 
     if self.ataque_corpo_timer > 0:
       self.ataque_corpo_timer -= 1
+
+    teclas = pygame.key.get_pressed()
+
+    vel_atual = (
+      self.velocidade * 2.4
+      if self.dash_timer > 0
+      else self.velocidade
+    )
+
+    if self.dash_timer > 0:
+      self.dash_timer -= 1
