@@ -1,4 +1,4 @@
-"""Fábrica de inimigos com @classmethod."""
+"""Fábrica de inimigos com @classmethod e @staticmethod."""
 
 from src.entidade import Entidade
 from src.inimigos import (
@@ -21,6 +21,10 @@ class FabricaInimigos:
       "boss": ChefeGuardiao,
   }
 
+  @staticmethod
+  def tipos_disponiveis() -> list[str]:
+    return list(FabricaInimigos._catalogo)
+
   @classmethod
   def criar_inimigo(
       cls,
@@ -30,5 +34,6 @@ class FabricaInimigos:
       alvo: Jogador,
       lista_entidades: list[Entidade],
   ) -> Inimigo:
-    classe = cls._catalogo.get(tipo, ZumbiSaltador)
-    return classe(x, y, alvo, lista_entidades)
+    if tipo not in cls._catalogo:
+      raise ValueError(f"Tipo de inimigo desconhecido: {tipo!r}")
+    return cls._catalogo[tipo](x, y, alvo, lista_entidades)
