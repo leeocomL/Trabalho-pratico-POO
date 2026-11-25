@@ -238,11 +238,15 @@ class ChefeGuardiao(Inimigo):
       elif padrao == "INVOCAR" and self.fase_furia:
         from src.fabrica import FabricaInimigos
 
-        servo = FabricaInimigos.criar_inimigo(
-            "zumbi", self.x, self.y - 20, self.alvo, self.lista_entidades
-        )
-        self.lista_entidades.append(servo)
-
+        servos = [
+            e for e in self.lista_entidades
+            if isinstance(e, ZumbiSaltador) and e.ativo
+        ]
+        if len(servos) < 3:
+          servo = FabricaInimigos.criar_inimigo(
+              "zumbi", self.x, self.y - 20, self.alvo, self.lista_entidades
+          )
+          self.lista_entidades.append(servo)
       self.timer_acao = 55 if self.fase_furia else 90
 
   def desenhar(self, tela: pygame.Surface):
