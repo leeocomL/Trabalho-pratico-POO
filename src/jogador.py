@@ -39,3 +39,13 @@ class Jogador(Entidade):
         self.invencivel_timer = 40
 
     self._vida = max(0, min(valor, self.vida_maxima))
+
+  def pular(self):
+    if self.no_chao:
+        self.vel_y = -13.2
+        self.no_chao = False
+
+  def esquivar(self):
+    if self.dash_timer == 0:
+        self.dash_timer = 12
+        self.invencivel_timer = 15
