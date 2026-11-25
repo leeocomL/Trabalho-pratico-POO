@@ -27,6 +27,11 @@ class Entidade(ABC):
 
 
   @abstractmethod
-  def atualizar(self) -> None:
+  def atualizar(self):
     """Atualiza o estado da entidade a cada quadro do jogo."""
     raise NotImplementedError("A subclasse deve implementar atualizar().")
+
+  @abstractmethod
+  def desenhar(self, tela: py.Surface):
+    """Desenha a entidade na superfície recebida."""
+    raise NotImplementedError("A subclasse deve implementar desenhar(tela).")
