@@ -81,3 +81,37 @@ class Jogador(Entidade):
 
     if self.dash_timer > 0:
       self.dash_timer -= 1
+
+    if teclas[pygame.K_a] or teclas[pygame.K_LEFT]:
+      self.x -= vel_atual
+      self.direcao = -1
+
+    if teclas[pygame.K_d] or teclas[pygame.K_RIGHT]:
+      self.x += vel_atual
+      self.direcao = 1
+
+    self.x = max(10.0, min(self.x, float(LARGURA - self.largura - 10)))
+
+    y_anterior = self.y + self.altura
+
+    self.vel_y += GRAVIDADE
+    self.y += self.vel_y
+
+    self.no_chao = False
+
+    if self.y + self.altura >= CHAO_Y:
+      self.y = float(CHAO_Y - self.altura)
+      self.vel_y = 0.0
+      self.no_chao = True
+
+    if self.vel_y >= 0:
+      for plat in self.plataformas:
+        if (
+          self.x + self.largura > plat.x
+          and self.x < plat.x + plat.largura
+          and y_anterior <= plat.y + 10
+          and self.y + self.altura >= plat.y
+        ):
+          self.y = float(plat.y - self.altura)
+          self.vel_y = 0.0
+          self.no_chao = True
