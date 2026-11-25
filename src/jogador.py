@@ -91,3 +91,15 @@ class Jogador(Entidade):
       self.direcao = 1
 
     self.x = max(10.0, min(self.x, float(LARGURA - self.largura - 10)))
+
+    y_anterior = self.y + self.altura
+
+    self.vel_y += GRAVIDADE
+    self.y += self.vel_y
+
+    self.no_chao = False
+
+    if self.y + self.altura >= CHAO_Y:
+      self.y = float(CHAO_Y - self.altura)
+      self.vel_y = 0.0
+      self.no_chao = True
