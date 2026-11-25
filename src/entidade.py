@@ -35,3 +35,12 @@ class Entidade(ABC):
   def desenhar(self, tela: py.Surface):
     """Desenha a entidade na superfície recebida."""
     raise NotImplementedError("A subclasse deve implementar desenhar(tela).")
+
+
+class UtilitarioColisao:
+  """Utilitário com método estático para verificação de colisões."""
+
+  @staticmethod
+  def verificar_colisao(entidade_a: Entidade, entidade_b: Entidade) -> bool:
+    """Verifica intersecção de retângulos entre duas entidades."""
+    return entidade_a.rect.colliderect(entidade_b.rect)
