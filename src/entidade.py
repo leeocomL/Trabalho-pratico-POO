@@ -24,3 +24,9 @@ class Entidade(ABC):
   def rect(self) -> py.Rect:
     """Calcula a área atual sem arredondar a posição guardada na entidade."""
     return py.Rect(int(self.x), int(self.y), self.largura, self.altura)    
+
+
+  @abstractmethod
+  def atualizar(self) -> None:
+    """Atualiza o estado da entidade a cada quadro do jogo."""
+    raise NotImplementedError("A subclasse deve implementar atualizar().")
