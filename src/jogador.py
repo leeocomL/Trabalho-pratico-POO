@@ -1,4 +1,5 @@
 """Classe Jogador com movimento, pulo, esquiva e ataque de espada."""
+import pygame
 from src.arma import Arma
 from src.config import (
     CHAO_Y,
@@ -49,3 +50,14 @@ class Jogador(Entidade):
     if self.dash_timer == 0:
         self.dash_timer = 12
         self.invencivel_timer = 15
+
+  def ataque_espada(self) -> pygame.Rect:
+    self.ataque_corpo_timer = 10
+
+    offset_x = (
+        self.x + self.largura
+        if self.direcao == 1
+        else self.x - 42
+    )
+
+    return pygame.Rect(int(offset_x), int(self.y + 6), 42, 38)
