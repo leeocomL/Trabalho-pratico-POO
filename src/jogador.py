@@ -61,3 +61,12 @@ class Jogador(Entidade):
     )
 
     return pygame.Rect(int(offset_x), int(self.y + 6), 42, 38)
+
+  def atualizar(self):
+    self.arma.atualizar_recarga()
+
+    if self.invencivel_timer > 0:
+      self.invencivel_timer -= 1
+
+    if self.ataque_corpo_timer > 0:
+      self.ataque_corpo_timer -= 1
