@@ -103,3 +103,15 @@ class Jogador(Entidade):
       self.y = float(CHAO_Y - self.altura)
       self.vel_y = 0.0
       self.no_chao = True
+
+    if self.vel_y >= 0:
+      for plat in self.plataformas:
+        if (
+          self.x + self.largura > plat.x
+          and self.x < plat.x + plat.largura
+          and y_anterior <= plat.y + 10
+          and self.y + self.altura >= plat.y
+        ):
+          self.y = float(plat.y - self.altura)
+          self.vel_y = 0.0
+          self.no_chao = True
