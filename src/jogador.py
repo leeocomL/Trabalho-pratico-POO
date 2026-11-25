@@ -27,3 +27,14 @@ class Jogador(Entidade):
     self.invencivel_timer = 0
     self.dash_timer = 0
     self.ataque_corpo_timer = 0
+
+
+  @property
+  def vida(self) -> int:
+    return self._vida
+
+  @vida.setter
+  def vida(self, valor: int):
+    if valor < self._vida:
+      self.invencivel_timer = 40
+    self._vida = max(0, min(valor, self.vida_maxima))
