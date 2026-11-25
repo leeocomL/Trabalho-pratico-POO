@@ -81,3 +81,13 @@ class Jogador(Entidade):
 
     if self.dash_timer > 0:
       self.dash_timer -= 1
+
+    if teclas[pygame.K_a] or teclas[pygame.K_LEFT]:
+      self.x -= vel_atual
+      self.direcao = -1
+
+    if teclas[pygame.K_d] or teclas[pygame.K_RIGHT]:
+      self.x += vel_atual
+      self.direcao = 1
+
+    self.x = max(10.0, min(self.x, float(LARGURA - self.largura - 10)))
