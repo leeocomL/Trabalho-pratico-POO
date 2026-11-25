@@ -115,3 +115,56 @@ class Jogador(Entidade):
           self.y = float(plat.y - self.altura)
           self.vel_y = 0.0
           self.no_chao = True
+
+  def desenhar(self, tela: pygame.Surface):
+    if self.invencivel_timer > 0 and (self.invencivel_timer // 3) % 2 == 0:
+        return
+    
+    cachecol_x = (
+        self.x - 10
+        if self.direcao == 1
+        else self.x + self.largura - 4)
+
+    pygame.draw.rect(
+        tela,
+        COR_CACHECOL,
+        (int(cachecol_x), int(self.y + 8), 14, 8),
+        border_radius=3,
+    )
+
+    pygame.draw.rect(
+        tela,
+        (40, 50, 75),
+        self.rect,
+        border_radius=6,
+    )
+    pygame.draw.rect(
+        tela,
+        COR_JOGADOR,
+        self.rect,
+        2,
+        border_radius=6,
+    )
+    pygame.draw.circle(
+        tela,
+        COR_JOGADOR,
+        (
+            int(self.x + self.largura // 2),
+            int(self.y + 12),
+        ),
+        9,
+    )
+    if self.ataque_corpo_timer > 0:
+        espada_x = (
+            self.x + self.largura
+            if self.direcao == 1
+            else self.x - 42
+        )
+        pygame.draw.arc(
+            tela,
+            COR_AMARELO,
+            (int(espada_x), int(self.y + 4), 42, 40),
+            0,
+            3.14,
+            4,
+        )
