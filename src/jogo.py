@@ -32,7 +32,7 @@ class Jogo:
   def __init__(self):
     pygame.init()
     self.tela = pygame.display.set_mode((LARGURA, ALTURA))
-    pygame.display.set_caption("gamezin de poo")
+    pygame.display.set_caption("Balada Salada: A dança")
 
     self.fonte_titulo = pygame.font.SysFont("consolas", 28, bold=True)
     self.fonte_hud = pygame.font.SysFont("consolas", 18, bold=True)
@@ -50,7 +50,7 @@ class Jogo:
     self.jogador = Jogador(
         x=450, y=380, arma=self.arma, plataformas=self.plataformas
     )
-    self.placar = Placar("leozin")
+    self.placar = Placar("Jogador")
     self.fase = Fase(1, self.jogador, self.plataformas)
     self.fim_de_jogo = False
     self.vitoria_onda_timer = 0
@@ -108,6 +108,8 @@ class Jogo:
                   self.jogador.x + 10,
                   self.jogador.y + 20,
                   self.jogador.direcao,
+
+          
               )
               if tiro:
                 self.fase.entidades.append(tiro)
