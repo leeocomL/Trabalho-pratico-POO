@@ -2,6 +2,7 @@
 
 from abc import ABC, abstractmethod
 
+import pygame as py
 class Entidade(ABC):
   """Define o estado e os métodos comuns aos objetos do jogo."""
 
@@ -17,3 +18,9 @@ class Entidade(ABC):
     self.altura = altura
     self.velocidade = velocidade  
     self.ativo = True
+
+
+  @property
+  def rect(self) -> py.Rect:
+    """Calcula a área atual sem arredondar a posição guardada na entidade."""
+    return py.Rect(int(self.x), int(self.y), self.largura, self.altura)    
