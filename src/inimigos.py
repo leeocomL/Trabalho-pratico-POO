@@ -179,7 +179,11 @@ class CavaleiroEscudeiro(Inimigo):
     direcao = 1 if self.alvo.x > self.x else -1
     self.x += self.velocidade * direcao
     self.aplicar_gravidade_basica()
-
+      
+  def desenhar(self, tela: pygame.Surface):
+    super().desenhar(tela)
+    lado = self.x + self.largura if self.alvo.x > self.x else self.x - 8
+    pygame.draw.rect(tela, COR_BRANCO, (lado, self.y + 10, 8, 36))
 
 class ChefeGuardiao(Inimigo):
   """Chefe da masmorra com fase de fúria e ataques variados."""
@@ -232,11 +236,15 @@ class ChefeGuardiao(Inimigo):
       elif padrao == "INVOCAR" and self.fase_furia:
         from src.fabrica import FabricaInimigos
 
-        servo = FabricaInimigos.criar_inimigo(
-            "zumbi", self.x, self.y - 20, self.alvo, self.lista_entidades
-        )
-        self.lista_entidades.append(servo)
-
+        servos = [
+            e for e in self.lista_entidades
+            if isinstance(e, ZumbiSaltador) and e.ativo
+        ]
+        if len(servos) < 3:
+          servo = FabricaInimigos.criar_inimigo(
+              "zumbi", self.x, self.y - 20, self.alvo, self.lista_entidades
+          )
+          self.lista_entidades.append(servo)
       self.timer_acao = 55 if self.fase_furia else 90
 
   def desenhar(self, tela: pygame.Surface):
