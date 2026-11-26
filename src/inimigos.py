@@ -61,6 +61,17 @@ class Inimigo(Entidade, ABC):
     if self._vida == 0:
       self.ativo = False
 
+  def desenhar_barra_vida(self, tela: pygame.Surface): 
+    proporcao = self.vida / self.vida_maxima 
+    pygame.draw.rect( 
+        tela, (50, 20, 20), (int(self.x), int(self.y - 10), self.largura, 5) 
+      ) 
+    pygame.draw.rect( 
+        tela, 
+        COR_VERMELHO, 
+        (int(self.x), int(self.y - 10), int(self.largura * proporcao), 5), 
+      )     
+
 class CavaleiroEscudeiro(Inimigo):
   """Inimigo pesado com alta resistência e dano elevado."""
 
