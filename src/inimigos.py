@@ -70,8 +70,35 @@ class Inimigo(Entidade, ABC):
         tela, 
         COR_VERMELHO, 
         (int(self.x), int(self.y - 10), int(self.largura * proporcao), 5), 
-      )     
+      )   
+      
+  def desenhar(self, tela: pygame.Surface):
+    cor_desenho = COR_BRANCO if self.piscar_dano > 0 else self.cor
+    if self.piscar_dano > 0:
+      self.piscar_dano -= 1
+    pygame.draw.rect(tela, (30, 28, 38), self.rect, border_radius=6)
+    pygame.draw.rect(tela, cor_desenho, self.rect, 3, border_radius=6)
+    self.desenhar_barra_vida(tela)
 
+class ZumbiSaltador(Inimigo):
+  """Inimigo ágil que persegue o jogador dando saltos periódicos."""
+
+  def __init__(
+      self, x: float, y: float, alvo: Jogador, lista_entidades: list[Entidade]
+  ):
+    super().__init__(
+        x,
+        y,
+        32,
+        46,
+        2.6,
+        vida_max=2,
+        dano=1,
+        pontos=50,
+        cor=COR_ZUMBI,
+        alvo=alvo,
+        lista_entidades=lista_entidades,
+    )
 class CavaleiroEscudeiro(Inimigo):
   """Inimigo pesado com alta resistência e dano elevado."""
 
