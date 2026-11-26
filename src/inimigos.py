@@ -99,6 +99,62 @@ class ZumbiSaltador(Inimigo):
         alvo=alvo,
         lista_entidades=lista_entidades,
     )
+    
+    self.timer_pulo = random.randint(45, 90)
+
+  def atualizar(self):
+    direcao = 1 if self.alvo.x > self.x else -1
+    self.x += self.velocidade * direcao
+    self.timer_pulo -= 1
+    
+    if self.timer_pulo <= 0 and self.no_chao:
+      self.vel_y = -11.0
+      self.no_chao = False
+      self.timer_pulo = random.randint(60, 110)
+    self.aplicar_gravidade_basica()
+
+
+class ArqueiroMaldito(Inimigo):
+  """Inimigo à distância que mantém afastamento e dispara flechas."""
+
+  def __init__(
+      self, x: float, y: float, alvo: Jogador, lista_entidades: list[Entidade]
+  ):
+    super().__init__(
+        x,
+        y,
+        30,
+        48,
+        1.5,
+        vida_max=2,
+        dano=1,
+        pontos=80,
+        cor=COR_ARQUEIRO,
+        alvo=alvo,
+        lista_entidades=lista_entidades,
+    )
+    self.cooldown_tiro = random.randint(60, 120)
+
+  def atualizar(self):
+    distancia_x = self.alvo.x - self.x
+    direcao = 1 if distancia_x >= 0 else -1
+
+    if abs(distancia_x) < 220:
+      self.x -= self.velocidade * direcao 
+
+    elif abs(distancia_x) > 380:
+      self.x += self.velocidade * direcao
+    self.x = max(20.0, min(self.x, float(LARGURA - self.largura - 20)))
+    self.aplicar_gravidade_basica()
+
+    self.cooldown_tiro -= 1
+    if self.cooldown_tiro <= 0:
+      flecha = Projetil(
+          self.x + 10, self.y + 18, direcao, dano=1, do_jogador=False
+      )
+      self.lista_entidades.append(flecha)
+      self.cooldown_tiro = 110    
+
 class CavaleiroEscudeiro(Inimigo):
   """Inimigo pesado com alta resistência e dano elevado."""
 
