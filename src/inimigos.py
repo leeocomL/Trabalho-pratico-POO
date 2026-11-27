@@ -61,6 +61,14 @@ class Inimigo(Entidade, ABC):
     if self._vida == 0:
       self.ativo = False
 
+  def aplicar_gravidade_basica(self):
+    self.vel_y += GRAVIDADE
+    self.y += self.vel_y
+    self.no_chao = self.y + self.altura >= CHAO_Y
+    if self.no_chao:
+      self.y = CHAO_Y - self.altura
+      self.vel_y = 0.0
+
   def desenhar_barra_vida(self, tela: pygame.Surface): 
     proporcao = self.vida / self.vida_maxima 
     pygame.draw.rect( 
